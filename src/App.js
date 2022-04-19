@@ -8,7 +8,6 @@ import {
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import LandingPage from './pages/LandingPage';
-import './scss/app.scss';
 
 export default function App() {
   return (
