@@ -8,7 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-export default function DashboardNav() {
+export default function DashboardNav({coinData, getCoinData}) {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -17,6 +17,7 @@ export default function DashboardNav() {
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
+                  <button onClick={() => getCoinData()}>GetCoinData</button>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
@@ -26,7 +27,7 @@ export default function DashboardNav() {
           </TabList>
         </Box>
         <TabPanel value="1"><Leaderboard /></TabPanel>
-        <TabPanel value="2"><Markets /></TabPanel>
+        <TabPanel value="2"><Markets coinData={coinData} /></TabPanel>
         <TabPanel value="3"><Portfolio /></TabPanel>
       </TabContext>
     </Box>

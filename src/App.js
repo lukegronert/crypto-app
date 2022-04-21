@@ -1,5 +1,5 @@
 import { NestCamWiredStandTwoTone } from "@mui/icons-material";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,11 +19,11 @@ export default function App() {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem('coinData', JSON.stringify(data))
-          console.log('fetched')
+          setCoinData(data)
         })
     } else {
       console.log(JSON.parse(localStorage.getItem('coinData')));
-      console.log('local storage')
+      setCoinData(JSON.parse(localStorage.getItem('coinData')))
     }
   }
 
@@ -37,6 +37,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard coinData={coinData} setCoinData={setCoinData} getCoinData={getCoinData} />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>
+        <button onClick={() => console.log(coinData)}></button>
       </div>
     </Router>
   );
