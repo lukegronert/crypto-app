@@ -17,7 +17,6 @@ export default function DashboardNav({coinData, getCoinData}) {
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
-                  <button onClick={() => getCoinData()}>GetCoinData</button>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
