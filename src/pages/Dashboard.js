@@ -16,7 +16,20 @@ const doc = new GoogleSpreadsheet(REACT_APP_SHEET_ID);
         client_email: REACT_APP_GOOGLE_CLIENT_EMAIL,
         private_key: REACT_APP_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
       });
+      await doc.loadInfo(); // loads document properties and worksheets
+      console.log(doc.title);
+      await doc.updateProperties({ title: 'renamed doc' });
+      
+      const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
+      console.log(sheet.title);
+      console.log(sheet.rowCount);
+      const rows = await sheet.getRows()
+      rows.map(entry => {
+          console.log(entry._rawData[0])
+          console.log(entry._rawData[1])
+      })
 }())
+
 
 export default function Dashboard({coinData, setCoinData}) {
     // Check if coinData exists in local storage or if it is older than 2 minutes (120,000ms)
