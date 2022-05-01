@@ -1,4 +1,3 @@
-import { NestCamWiredStandTwoTone } from "@mui/icons-material";
 import React, {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
@@ -11,7 +10,7 @@ import LandingPage from './pages/LandingPage';
 
 export default function App() {
   const [coinData, setCoinData] = useState([]);
-
+  
   return (
     <Router>
       <div>
