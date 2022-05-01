@@ -29,7 +29,8 @@ export default function Markets({coinData}) {
         )
     } else if (coinData.data && !isMobile) {
         const rows = coinData.data.map(coin => (
-            createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*100)/100), (Math.round(coin.changePercent24Hr* 100)/100))
+                                                        //multiple and divide by 10000 to return numbers to 4 decimal places
+            createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*10000)/10000), (Math.round(coin.changePercent24Hr* 100)/100))
         ))
 
         return (
