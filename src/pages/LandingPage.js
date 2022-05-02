@@ -1,8 +1,8 @@
 import MainNav from '../components/MainNav';
-export default function LandingPage() {
+export default function LandingPage({user}) {
     return (
         <section>
-            <MainNav />
+            <MainNav user={user} />
             LANDING PAGE
         </section>
     )

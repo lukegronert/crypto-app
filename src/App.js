@@ -7,9 +7,19 @@ import {
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import LandingPage from './pages/LandingPage';
+import netlifyIdentity from 'netlify-identity-widget';
 
 export default function App() {
   const [coinData, setCoinData] = useState([]);
+  const [user, setUser] = useState({})
+
+  netlifyIdentity.on('login', () => {
+    setUser(netlifyIdentity.currentUser())
+  })
+
+  useEffect(() => {
+    setUser(netlifyIdentity.currentUser().user_metadata.full_name)
+  })
   
   return (
     <Router>
@@ -18,8 +28,8 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Routes>
           <Route path="/about" element={<About />} />
-          <Route path="/dashboard" element={<Dashboard coinData={coinData} setCoinData={setCoinData} />} />
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<Dashboard coinData={coinData} setCoinData={setCoinData} user={user} />} />
+          <Route path="/" element={<LandingPage user={user} />} />
         </Routes>
       </div>
     </Router>

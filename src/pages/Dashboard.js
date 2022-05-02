@@ -31,7 +31,7 @@ const doc = new GoogleSpreadsheet(REACT_APP_SHEET_ID);
 }())
 
 
-export default function Dashboard({coinData, setCoinData}) {
+export default function Dashboard({coinData, setCoinData, user}) {
     // Check if coinData exists in local storage or if it is older than 2 minutes (120,000ms)
     useEffect(() => {
         if(localStorage.getItem('coinData') === null || (new Date().getTime() - JSON.parse(localStorage.getItem('coinData')).timestamp) > 120000) {
@@ -50,7 +50,7 @@ export default function Dashboard({coinData, setCoinData}) {
     }, []);
     return (
         <section>
-            <MainNav />
+            <MainNav user={user} />
             <DashboardNav coinData={coinData} />
         </section>
     )
