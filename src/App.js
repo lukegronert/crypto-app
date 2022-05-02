@@ -18,7 +18,9 @@ export default function App() {
   })
 
   useEffect(() => {
-    setUser(netlifyIdentity.currentUser().user_metadata.full_name)
+    if(netlifyIdentity.currentUser()) {
+      setUser(netlifyIdentity.currentUser().user_metadata.full_name)
+    }
   })
   
   return (
