@@ -8,8 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import BuyModal from './BuyModal.js'
 
-export default function Markets({coinData}) {
+
+export default function Markets({coinData, user}) {
     const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
     function createData(id, symbol, priceUsd, changePercent24Hr) {
@@ -58,7 +60,7 @@ export default function Markets({coinData}) {
                         <TableCell align="right">${row.priceUsd}</TableCell>
                         <TableCell align="right">${row.changePercent24Hr}</TableCell>
                         <TableCell align="right">
-                            <button>Buy</button>
+                            <button><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
                             <button>Sell</button>
                         </TableCell>
                         </TableRow>
@@ -93,7 +95,7 @@ export default function Markets({coinData}) {
                             <TableCell align="right">${row.priceUsd}</TableCell>
                             <TableCell align="right">${row.changePercent24Hr}</TableCell>
                             <TableCell align="right">
-                                <button>Buy</button>
+                                <button><BuyModal /></button>
                                 <button>Sell</button>
                             </TableCell>
                         </TableRow>
