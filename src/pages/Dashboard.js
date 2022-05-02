@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import MainNav from '../components/MainNav';
 import DashboardNav from '../components/DashboardNav';
-import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 
 export default function Dashboard({coinData, setCoinData, user}) {

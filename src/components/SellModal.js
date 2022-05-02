@@ -126,7 +126,7 @@ export default function NestedModal({coin, price, user}) {
                 //create variable for sheet 4, sales
                 const sheet4 = doc.sheetsByIndex[3];
                 //create new row in sheet with sale info
-                const newRow = await sheet4.addRow({ name: user, coin: coin, total: total })
+                const newRow = await sheet4.addRow({ name: user, coin: coin, price: price, total: total })
                 //set the sell message for child modal
                 setSellMessage('Success! Check your portfolio for your sale.')
                 //add total from user's bank and pass handleOpen function so child modal
