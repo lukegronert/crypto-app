@@ -66,10 +66,17 @@ export default function Portfolio({user}) {
         })
         setUserCoinTotals(coinTotalsArray)
     }
-
-    return (
-        <section>
-            <h1>{user}</h1>
-        </section>
-    )
+    if(user) {
+        return (
+            <section>
+                <h1>{user}</h1>
+            </section>
+        )
+    } else {
+        return (
+            <section>
+                <h1>Login to view your portfolio</h1>
+            </section>
+        )
+    }
 }
