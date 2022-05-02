@@ -11,10 +11,14 @@ import netlifyIdentity from 'netlify-identity-widget';
 
 export default function App() {
   const [coinData, setCoinData] = useState([]);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState('')
 
   netlifyIdentity.on('login', () => {
-    setUser(netlifyIdentity.currentUser())
+    setUser(netlifyIdentity.currentUser().user_metadata.full_name)
+  })
+
+  netlifyIdentity.on('logout', () => {
+    setUser('')
   })
 
   useEffect(() => {

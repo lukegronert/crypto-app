@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {GoogleSpreadsheet} from 'google-spreadsheet';
 
 const {REACT_APP_SHEET_ID} = process.env;
@@ -66,6 +66,11 @@ export default function Portfolio({user}) {
         })
         setUserCoinTotals(coinTotalsArray)
     }
+
+    useEffect(() => {
+        console.log('rerender')
+    }, [])
+    
     if(user) {
         return (
             <section>
