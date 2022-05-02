@@ -18,8 +18,8 @@ const doc = new GoogleSpreadsheet(REACT_APP_SHEET_ID);
         client_email: REACT_APP_GOOGLE_CLIENT_EMAIL,
         private_key: REACT_APP_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
       });
-    await doc.loadInfo(); // loads document properties and worksheets
-    console.log(doc.title);
+      await doc.loadInfo(); // loads document properties and worksheets
+      console.log(doc.title);
 }())
 
 const style = {
@@ -60,7 +60,7 @@ function ChildModal({addPurchaseToSheet, purchaseMessage}) {
           <p id="child-modal-description">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
+          <Button onClick={handleClose}>Close</Button>
         </Box>
       </Modal>
     </React.Fragment>
@@ -131,10 +131,6 @@ export default function NestedModal({coin, price, user}) {
                 setPurchaseMessage('Sorry, you do not have enough money in the bank.')
                 handleOpen()
             }
-        } else {
-            console.log(row.name)
-            console.log(user)
-            console.log('User not found.')
         }
     })
   }

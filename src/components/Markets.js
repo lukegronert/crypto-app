@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import BuyModal from './BuyModal.js'
+import SellModal from './SellModal.js'
 
 
 export default function Markets({coinData, user}) {
@@ -61,7 +62,7 @@ export default function Markets({coinData, user}) {
                         <TableCell align="right">${row.changePercent24Hr}</TableCell>
                         <TableCell align="right">
                             <button><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
-                            <button>Sell</button>
+                            <button><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
                         </TableCell>
                         </TableRow>
                     ))}
@@ -95,8 +96,8 @@ export default function Markets({coinData, user}) {
                             <TableCell align="right">${row.priceUsd}</TableCell>
                             <TableCell align="right">${row.changePercent24Hr}</TableCell>
                             <TableCell align="right">
-                                <button><BuyModal /></button>
-                                <button>Sell</button>
+                                <button><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                                <button><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
                             </TableCell>
                         </TableRow>
                     ))}
