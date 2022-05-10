@@ -61,8 +61,8 @@ export default function Markets({coinData, user}) {
                         <TableCell align="right">${row.priceUsd}</TableCell>
                         <TableCell align="right">${row.changePercent24Hr}</TableCell>
                         <TableCell align="right">
-                            <button><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
-                            <button><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                            <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                            <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
                         </TableCell>
                         </TableRow>
                     ))}
@@ -96,8 +96,8 @@ export default function Markets({coinData, user}) {
                             <TableCell align="right">${row.priceUsd}</TableCell>
                             <TableCell align="right">${row.changePercent24Hr}</TableCell>
                             <TableCell align="right">
-                                <button><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
-                                <button><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                                <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                                <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
                             </TableCell>
                         </TableRow>
                     ))}

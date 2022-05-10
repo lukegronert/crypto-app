@@ -119,12 +119,12 @@ export default function MainNav ({user}) {
             >
               <MenuItem key='about' onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                      <Link to="/about" >About</Link>
+                      <Link style={{color: 'black'}} to="/about" >About</Link>
                   </Typography>
               </MenuItem>
               <MenuItem key='dashboard' onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                      <Link to="/dashboard">Dashboard</Link>
+                      <Link style={{color: 'black'}} to="/dashboard">Dashboard</Link>
                   </Typography>
               </MenuItem>
             </Menu>

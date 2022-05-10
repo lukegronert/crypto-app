@@ -81,8 +81,8 @@ export default function NestedModal({coin, price, user}) {
 
   const subtractPurchaseFromUserTotal = async (rows, handleOpen) => {
     rows.map(row => {
-        if(row.name === user) {
-            row.bank = row.bank - total
+        if(row.user === user) {
+            row.total = row.total - total
             row.save()
             handleOpen()
         }
@@ -97,35 +97,36 @@ export default function NestedModal({coin, price, user}) {
     const sheet1Rows = await sheet1.getRows()
     //checks all rows to look for users row
     sheet1Rows.map(async row => {
-        //if there is a row with the user's name
-        if(row.name == user) {
-            //if the user's bank has enough money
-            if(row.bank >= total) {
+        //if there is a row with the useruser
+        if(row.user == user) {
+            //if the user's total has enough money
+            if(row.total >= total) {
                 //create variable for sheet 2, purchases
                 const sheet2 = doc.sheetsByIndex[1];
                 //create new row in sheet with purchase info
-                const newSheet2Row = await sheet2.addRow({ name: user, coin: coin, price: price, total: total })
+                const newSheet2Row = await sheet2.addRow({ user: user, coin: coin, price: price, amount: amount, total: total })
                 //set the purchase message for child modal
                 setPurchaseMessage('Success! Check your portfolio for your purchase.')
-                //subtract total from user's bank and pass handleOpen function so child modal
+                //subtract total from user's total and pass handleOpen function so child modal
                 //can open from subtractPurchaseFromUserTotal function
                 subtractPurchaseFromUserTotal(sheet1Rows, handleOpen)
                 //select sheet for user coin totals
                 const sheet3 = doc.sheetsByIndex[2];
                 const sheet3Rows = await sheet3.getRows()
                 //check if user has any of the selected coin
-                const userCoinRow = sheet3Rows.filter(row => row.name === user && row.coin === coin)
+                const userCoinRow = sheet3Rows.filter(row => row.user === user && row.coin === coin)
                 if(userCoinRow.length > 0) {
                     //add total of purchase to that row to update user's coin total
                     sheet3Rows.map(async row => {
-                        if(row.name === user && row.coin === coin) {
+                        if(row.user === user && row.coin === coin) {
                             row.total = Number(row.total) + total;
+                            row.amount = Number(row.amount) + amount;
                             await row.save()
                         }
                     });
                 } else {
                     //if not, create a new row with user's coin total
-                    const newSheet3Row = await sheet3.addRow({name: user, coin: coin, total: total})
+                    const newSheet3Row = await sheet3.addRow({user: user, coin: coin, amount: amount, total: total})
                 }
             } else {
                 setPurchaseMessage('Sorry, you do not have enough money in the bank.')

@@ -81,7 +81,7 @@ export default function NestedModal({coin, price, user}) {
       const sheet3Rows = await sheet3.getRows()
       //Find row of user's selected coin total
       sheet3Rows.map(row => {
-        if(row.name == user && row.coin == coin) {
+        if(row.user == user && row.coin == coin) {
           setUserCoinTotal(row.total)
         }
       })
@@ -98,9 +98,9 @@ export default function NestedModal({coin, price, user}) {
   const addSellToUserTotal = async (rows, handleOpen) => {
     //check for user's row in OverallUserData sheet
     rows.map(row => {
-        if(row.name === user) {
-          //Add total sale to user's bank
-            row.bank = Number(row.bank) + total
+        if(row.user === user) {
+          //Add total sale to user's total
+            row.total = Number(row.total) + total
             row.save()
             handleOpen()
         }
@@ -117,19 +117,20 @@ export default function NestedModal({coin, price, user}) {
     //checks all rows to see if user owns any of selected coin
     sheet3Rows.map(async row => {
         //if there is a row with the user's name and selected coin
-        if(row.name === user && row.coin === coin) {
+        if(row.user === user && row.coin === coin) {
             //if user owns more of the coin than they want to sell
             if(row.total >= total) {
                 //subtract amount they want to sell from their stock of the coin
                 row.total = Number(row.total - total)
+                row.amount = Number(row.amount - amount)
                 row.save()
                 //create variable for sheet 4, sales
                 const sheet4 = doc.sheetsByIndex[3];
                 //create new row in sheet with sale info
-                const newRow = await sheet4.addRow({ name: user, coin: coin, price: price, total: total })
+                const newRow = await sheet4.addRow({ user: user, coin: coin, price: price, amount: amount, total: total })
                 //set the sell message for child modal
                 setSellMessage('Success! Check your portfolio for your sale.')
-                //add total from user's bank and pass handleOpen function so child modal
+                //add total from user's total and pass handleOpen function so child modal
                 //can open from addSellToUserTotal function
                 addSellToUserTotal(sheet1Rows, handleOpen)
                 checkUserCoinTotal()

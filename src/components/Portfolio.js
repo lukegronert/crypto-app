@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {GoogleSpreadsheet} from 'google-spreadsheet';
+import PortfolioTabs from './PortfolioTabs';
 
 const {REACT_APP_SHEET_ID} = process.env;
 const {REACT_APP_GOOGLE_CLIENT_EMAIL} = process.env;
@@ -28,53 +29,60 @@ export default function Portfolio({user}) {
         const sheet1 = doc.sheetsByIndex[0]
         const sheet1Rows = await sheet1.getRows()
         sheet1Rows.map(row => {
-            if(row.name === user) {
-                setUserTotal(user.total)
+            if(row.user === user) {
+                setUserTotal(row.total)
             }
         })
     }
     const getUserPurchases = async () => {
         const sheet2 = doc.sheetsByIndex[1];
-        const sheet2Rows = sheet2.getRows();
+        const sheet2Rows = await sheet2.getRows();
         let purchasesArray = []
         await sheet2Rows.map(row => {
-            if(row.user === user) {
-                purchasesArray.push({coin: row.coin, price: row.price, total: row.total})
+             if(row.user === user) {
+                purchasesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
+                console.log(purchasesArray)
             }
         })
+        console.log(purchasesArray)
         setUserPurchases(purchasesArray)
     }
     const getUserSales = async () => {
         const sheet4 = doc.sheetsByIndex[3];
-        const sheet4Rows = sheet4.getRows();
+        const sheet4Rows = await sheet4.getRows();
         let salesArray = []
         await sheet4Rows.map(row => {
             if(row.user === user) {
-                salesArray.push({coin: row.coin, price: row.price, total: row.total})
+                salesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
             }
         })
         setUserSales(salesArray)
     }
     const getUserCoinTotals = async () => {
         const sheet3 = doc.sheetsByIndex[2];
-        const sheet3Rows = sheet3.getRows();
+        const sheet3Rows = await sheet3.getRows();
         let coinTotalsArray = []
         await sheet3Rows.map(row => {
             if(row.user === user) {
-                coinTotalsArray.push({coin: row.coin, total: row.total})
+                coinTotalsArray.push({coin: row.coin, amount: row.amount, total: row.total})
             }
         })
         setUserCoinTotals(coinTotalsArray)
     }
 
     useEffect(() => {
-        console.log('rerender')
+        getUserCoinTotals()
+        getUserPurchases()
+        getUserSales()
+        getUserTotal()
     }, [])
     
     if(user) {
         return (
             <section>
                 <h1>{user}</h1>
+                <p>Total $ - {userTotal}</p>
+                <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} />
             </section>
         )
     } else {
