@@ -1,5 +1,5 @@
-.login-link {
-    color: blue;
-    text-decoration: underline;
+a {
+    color: white;
     cursor: pointer;
+    text-decoration: none;
 }
