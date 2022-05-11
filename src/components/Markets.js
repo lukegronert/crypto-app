@@ -12,7 +12,7 @@ import BuyModal from './BuyModal.js'
 import SellModal from './SellModal.js'
 
 
-export default function Markets({coinData, user}) {
+export default function Markets({coinData, user, doc}) {
     const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
     function createData(id, symbol, priceUsd, changePercent24Hr) {
@@ -61,8 +61,8 @@ export default function Markets({coinData, user}) {
                         <TableCell align="right">${row.priceUsd}</TableCell>
                         <TableCell align="right">${row.changePercent24Hr}</TableCell>
                         <TableCell align="right">
-                            <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
-                            <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                            <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                            <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                         </TableCell>
                         </TableRow>
                     ))}
@@ -96,8 +96,8 @@ export default function Markets({coinData, user}) {
                             <TableCell align="right">${row.priceUsd}</TableCell>
                             <TableCell align="right">${row.changePercent24Hr}</TableCell>
                             <TableCell align="right">
-                                <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
-                                <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} /></button>
+                                <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                                <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                             </TableCell>
                         </TableRow>
                     ))}

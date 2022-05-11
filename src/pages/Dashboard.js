@@ -3,7 +3,7 @@ import MainNav from '../components/MainNav';
 import DashboardNav from '../components/DashboardNav';
 
 
-export default function Dashboard({coinData, setCoinData, user}) {
+export default function Dashboard({coinData, setCoinData, user, doc}) {
     // Check if coinData exists in local storage or if it is older than 2 minutes (120,000ms)
     useEffect(() => {
         if(localStorage.getItem('coinData') === null || (new Date().getTime() - JSON.parse(localStorage.getItem('coinData')).timestamp) > 120000) {
@@ -24,7 +24,7 @@ export default function Dashboard({coinData, setCoinData, user}) {
     return (
         <section>
             <MainNav user={user} />
-            <DashboardNav coinData={coinData} user={user} />
+            <DashboardNav coinData={coinData} user={user} doc={doc} />
         </section>
     )
 }

@@ -8,7 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-export default function DashboardNav({coinData, getCoinData, user}) {
+export default function DashboardNav({coinData, getCoinData, user, doc}) {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -25,9 +25,9 @@ export default function DashboardNav({coinData, getCoinData, user}) {
             <Tab label="Portfolio" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1"><Leaderboard /></TabPanel>
-        <TabPanel value="2"><Markets coinData={coinData} user={user} /></TabPanel>
-        <TabPanel value="3"><Portfolio user={user} /></TabPanel>
+        <TabPanel value="1"><Leaderboard doc={doc} /></TabPanel>
+        <TabPanel value="2"><Markets coinData={coinData} user={user} doc={doc} /></TabPanel>
+        <TabPanel value="3"><Portfolio user={user} doc={doc} /></TabPanel>
       </TabContext>
     </Box>
   );
