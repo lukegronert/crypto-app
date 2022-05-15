@@ -31,6 +31,8 @@ export default function Portfolio({user}) {
         sheet1Rows.map(row => {
             if(row.user === user) {
                 setUserTotal(row.total)
+            } else {
+                setUserTotal(-1)
             }
         })
     }
@@ -70,6 +72,18 @@ export default function Portfolio({user}) {
         setUserCoinTotals(coinTotalsArray)
         console.log(coinTotalsArray)
     }
+    //Adds 10000 to user total, hides button, displays message telling user that they now have $10,000 in the bank 
+    const initUserBank = async () => {
+        const initUserButton = document.querySelector('.initUserButton');
+        initUserButton.style.display = 'none';
+        const initUserMessage = document.querySelector('.initUserMessage');
+        initUserMessage.style.display = 'block';
+        const sheet1 = doc.sheetsByIndex[0];
+        const sheet1Rows = await sheet1.getRows()
+        if(sheet1Rows.filter(row => row.user === user).length === 0) {
+            const newSheet1Row = await sheet1.addRow({ user: user, total: 10000 })
+        }
+    }
 
     useEffect(() => {
         getUserCoinTotals()
@@ -78,12 +92,20 @@ export default function Portfolio({user}) {
         getUserTotal()
     }, [])
     
-    if(user) {
+    if(user && userTotal > 0) {
         return (
             <section>
                 <h1>{user}</h1>
                 <p>Total $ - {userTotal}</p>
                 <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} />
+            </section>
+        )
+    } else if (user && userTotal < 0) {
+        return (
+            <section>
+                <h1>{user}</h1>
+                <button className="initUserButton" onClick={() => initUserBank()}>Fill your bank!</button>
+                <p className="initUserMessage" style={{display: 'none'}}>Your account now has $10,000 to invest!</p>
             </section>
         )
     } else {
