@@ -68,6 +68,7 @@ export default function Portfolio({user}) {
             }
         })
         setUserCoinTotals(coinTotalsArray)
+        console.log(coinTotalsArray)
     }
 
     useEffect(() => {

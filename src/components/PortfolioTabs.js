@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import PurchasesTab from './PurchasesTab';
+import SalesTab from './SalesTab';
+import TotalsTab from './TotalsTab';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,13 +66,13 @@ export default function VerticalTabs({userPurchases, userSales, userCoinTotals})
         <Tab label="Sales" {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        Totals
+        <TotalsTab userCoinTotals={userCoinTotals} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <PurchasesTab userPurchases={userPurchases} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Sales
+        <SalesTab userSales={userSales} />
       </TabPanel>
     </Box>
   );
