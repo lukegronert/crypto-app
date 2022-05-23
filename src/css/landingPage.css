@@ -1,0 +1,20 @@
+@import url("base.css");
+
+.h1Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+}
+
+.landingPageh1 {
+    width: 100%;
+    font-size: 4em;
+    color: white;
+}
+
+body {
+    color: var(--yellow);
+    background: var(--black)
+}
