@@ -82,7 +82,7 @@ export default function Markets({coinData, user, doc}) {
                         <TableRow>
                             <TableCell>Sym</TableCell>
                             <TableCell align="right">Price</TableCell>
-                            <TableCell align="right">24Hr Change</TableCell>
+                            <TableCell align="right">24Hr</TableCell>
                             <TableCell align="right">Trade</TableCell>
                         </TableRow>
                     </TableHead>
