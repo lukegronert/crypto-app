@@ -7,11 +7,11 @@ export default function TotalsTab({userCoinTotals}) {
     }, [])
     return (
         <>
-            {userCoinTotals.map(coin => {
+            {userCoinTotals.map((coin, index) => {
                 return (
-                    <p>
+                    <div key={index}>
                         {coin.coin} - amount: {coin.amount}- total: {coin.total}
-                    </p>
+                    </div>
                 )
             })}
         </>

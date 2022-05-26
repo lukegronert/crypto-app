@@ -7,11 +7,12 @@ export default function PurchasesTab({userPurchases}) {
     }, [])
     return (
         <>
-            {userPurchases.map(purchase => {
+            {userPurchases.map((purchase, index) => {
                 return (
-                    <p>
-                        {purchase.coin} - price: {purchase.price} - amount: {purchase.amount}- total: {purchase.total}
-                    </p>
+                    <div key={index}>
+                        <p>{purchase.coin} {purchase.price}</p>
+                        <p>{purchase.amount} {purchase.total}</p>
+                    </div>
                 )
             })}
         </>

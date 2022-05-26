@@ -7,11 +7,11 @@ export default function SalesTab({userSales}) {
     }, [])
     return (
         <>
-            {userSales.map(sale => {
+            {userSales.map((sale, index) => {
                 return (
-                    <p>
+                    <div key={index}>
                         {sale.coin} - price: {sale.price} - amount: {sale.amount}- total: {sale.total}
-                    </p>
+                    </div>
                 )
             })}
         </>
