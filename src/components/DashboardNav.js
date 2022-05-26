@@ -20,9 +20,9 @@ export default function DashboardNav({coinData, getCoinData, user, doc}) {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
-            <Tab label="Leaderboard" value="1" />
-            <Tab label="Markets" value="2" />
-            <Tab label="Portfolio" value="3" />
+            <Tab label="Leaderboard" style={{color: 'white'}} value="1" />
+            <Tab label="Markets" style={{color: 'white'}} value="2" />
+            <Tab label="Portfolio" style={{color: 'white'}} value="3" />
           </TabList>
         </Box>
         <TabPanel value="1"><Leaderboard doc={doc} /></TabPanel>
