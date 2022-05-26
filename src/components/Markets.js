@@ -59,7 +59,7 @@ export default function Markets({coinData, user, doc}) {
                         </TableCell>
                         <TableCell align="right">{row.symbol}</TableCell>
                         <TableCell align="right">${row.priceUsd}</TableCell>
-                        <TableCell align="right">${row.changePercent24Hr}</TableCell>
+                        <TableCell align="right">{row.changePercent24Hr}%</TableCell>
                         <TableCell align="right">
                             <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                             <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
@@ -80,10 +80,10 @@ export default function Markets({coinData, user, doc}) {
                 <Table sx={{ minWidth: 300 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Symbol</TableCell>
-                            <TableCell align="right">Price (USD)</TableCell>
-                            <TableCell align="right">24 Hour Change</TableCell>
-                            <TableCell align="right">Buy / Sell</TableCell>
+                            <TableCell>Sym</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                            <TableCell align="right">24Hr Change</TableCell>
+                            <TableCell align="right">Trade</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -94,7 +94,7 @@ export default function Markets({coinData, user, doc}) {
                         >
                             <TableCell component="th" scope="row">{row.symbol}</TableCell>
                             <TableCell align="right">${row.priceUsd}</TableCell>
-                            <TableCell align="right">${row.changePercent24Hr}</TableCell>
+                            <TableCell align="right">{row.changePercent24Hr}%</TableCell>
                             <TableCell align="right">
                                 <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                                 <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
