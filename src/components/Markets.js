@@ -98,8 +98,8 @@ export default function Markets({coinData, user, doc}) {
                             <TableCell align="right">${row.priceUsd}</TableCell>
                             <TableCell align="right">{row.changePercent24Hr}%</TableCell>
                             <TableCell align="right">
-                                <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
-                                <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                                <button style={{background: '#286e18', border: 'none', height: '25px'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                                <button style={{background: '#f5594e', border: 'none', height: '25px'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                             </TableCell>
                         </TableRow>
                     ))}
