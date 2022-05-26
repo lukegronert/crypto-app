@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 import BuyModal from './BuyModal.js'
 import SellModal from './SellModal.js'
 
+import '../css/markets.css';
+
 
 export default function Markets({coinData, user, doc}) {
     const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
