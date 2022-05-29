@@ -104,8 +104,11 @@ export default function Portfolio({user, coinData}) {
         getUserPurchases()
         getUserSales()
         getUserTotal()
-        getPortfolioValue()
     }, [])
+
+    useEffect(() => {
+        getPortfolioValue()
+    }, [userCoinTotals])
     
     if(user && userTotal > 0) {
         return (
