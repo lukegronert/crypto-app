@@ -24,6 +24,7 @@ export default function Portfolio({user, coinData}) {
     const [userPurchases, setUserPurchases] = useState([])
     const [userSales, setUserSales] = useState([])
     const [userCoinTotals, setUserCoinTotals] = useState([])
+    const [portfolioValue, setPortfolioValue] = useState(0)
 
     const getUserTotal = async () => {
         const sheet1 = doc.sheetsByIndex[0]
@@ -72,6 +73,19 @@ export default function Portfolio({user, coinData}) {
         setUserCoinTotals(coinTotalsArray)
         console.log(coinTotalsArray)
     }
+
+    const getPortfolioValue = () => {
+        let portVal = 0;
+        userCoinTotals.forEach(coin => {
+            for(let i=0; i<coinData.length;i++) {
+                if(coin.coin === coinData[i].symbol) {
+                    portVal += (coin.amount * coinData[i].priceUsd)
+                    console.log(portVal)
+                }
+            }
+        })
+        setPortfolioValue(Math.round(portVal*100)/100);
+    }
     //Adds 10000 to user total, hides button, displays message telling user that they now have $10,000 in the bank 
     const initUserBank = async () => {
         const initUserButton = document.querySelector('.initUserButton');
@@ -90,6 +104,7 @@ export default function Portfolio({user, coinData}) {
         getUserPurchases()
         getUserSales()
         getUserTotal()
+        getPortfolioValue()
     }, [])
     
     if(user && userTotal > 0) {
@@ -97,6 +112,7 @@ export default function Portfolio({user, coinData}) {
             <section>
                 <h1>{user}</h1>
                 <p>Cash: ${userTotal}</p>
+                <p>Portfolio value: ${portfolioValue}</p>
                 <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} coinData={coinData} />
             </section>
         )
