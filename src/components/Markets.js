@@ -26,14 +26,14 @@ export default function Markets({coinData, user, doc}) {
         console.log('rerender')
     }, [coinData])
 
-    if(!coinData.data) {
+    if(!coinData) {
         return (
             <div>
                 Loading...
             </div>
         )
-    } else if (coinData.data && !isMobile) {
-        const rows = coinData.data.map(coin => (
+    } else if (coinData && !isMobile) {
+        const rows = coinData.map(coin => (
                                                         //multiple and divide by 10000 to return numbers to 4 decimal places
             createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*10000)/10000), (Math.round(coin.changePercent24Hr* 100)/100))
         ))
@@ -73,7 +73,7 @@ export default function Markets({coinData, user, doc}) {
             </TableContainer>
         );
     } else {
-        const rows = coinData.data.map(coin => (
+        const rows = coinData.map(coin => (
             createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*100)/100), (Math.round(coin.changePercent24Hr* 100)/100))
         ))
 

@@ -121,7 +121,7 @@ function a11yProps(index) {
   };
 }
 
-export default function PortfolioTabs({userPurchases, userSales, userCoinTotals}) {
+export default function PortfolioTabs({userPurchases, userSales, userCoinTotals, coinData}) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -138,7 +138,7 @@ export default function PortfolioTabs({userPurchases, userSales, userCoinTotals}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <TotalsTab userCoinTotals={userCoinTotals} />
+        <TotalsTab userCoinTotals={userCoinTotals} coinData={coinData} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <PurchasesTab userPurchases={userPurchases} />

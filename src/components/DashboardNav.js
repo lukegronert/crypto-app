@@ -27,7 +27,7 @@ export default function DashboardNav({coinData, getCoinData, user, doc}) {
         </Box>
         <TabPanel value="1"><Leaderboard doc={doc} /></TabPanel>
         <TabPanel value="2"><Markets coinData={coinData} user={user} doc={doc} /></TabPanel>
-        <TabPanel value="3"><Portfolio user={user} doc={doc} /></TabPanel>
+        <TabPanel value="3"><Portfolio user={user} doc={doc} coinData={coinData} /></TabPanel>
       </TabContext>
     </Box>
   );

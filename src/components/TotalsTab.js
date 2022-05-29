@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 
-export default function TotalsTab({userCoinTotals}) {
+export default function TotalsTab({userCoinTotals, coinData}) {
 
     useEffect(() => {
         console.log(userCoinTotals)

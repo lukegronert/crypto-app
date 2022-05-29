@@ -19,7 +19,7 @@ const doc = new GoogleSpreadsheet(REACT_APP_SHEET_ID);
   console.log(doc.title);
 }())
 
-export default function Portfolio({user}) {
+export default function Portfolio({user, coinData}) {
     const [userTotal, setUserTotal] = useState(0)
     const [userPurchases, setUserPurchases] = useState([])
     const [userSales, setUserSales] = useState([])
@@ -96,8 +96,8 @@ export default function Portfolio({user}) {
         return (
             <section>
                 <h1>{user}</h1>
-                <p>Total $ - {userTotal}</p>
-                <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} />
+                <p>Cash: ${userTotal}</p>
+                <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} coinData={coinData} />
             </section>
         )
     } else if (user && userTotal < 0) {

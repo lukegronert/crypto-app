@@ -9,7 +9,8 @@ export default function Dashboard({coinData, setCoinData, user, doc}) {
         fetch('https://api.coincap.io/v2/assets?limit=20')
             .then(response => response.json())
             .then(data => {
-            setCoinData(data)
+            setCoinData(data.data)
+            console.log(data.data)
             })
     }, []);
 
