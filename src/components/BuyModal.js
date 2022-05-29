@@ -64,7 +64,7 @@ export default function NestedModal({coin, price, user, doc}) {
   const subtractPurchaseFromUserTotal = async (rows, handleOpen) => {
     rows.map(row => {
         if(row.user === user) {
-            row.total = row.total - total
+            row.total = Number(row.total) - Number(total)
             row.save()
             handleOpen()
         }
@@ -101,8 +101,8 @@ export default function NestedModal({coin, price, user, doc}) {
                     //add total of purchase to that row to update user's coin total
                     sheet3Rows.map(async row => {
                         if(row.user === user && row.coin === coin) {
-                            row.total = Number(row.total) + total;
-                            row.amount = Number(row.amount) + amount;
+                            row.total = Number(row.total) + Number(total);
+                            row.amount = Number(row.amount) + Number(amount);
                             await row.save()
                         }
                     });

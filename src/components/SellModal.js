@@ -82,7 +82,7 @@ export default function NestedModal({coin, price, user, doc}) {
     rows.map(row => {
         if(row.user === user) {
           //Add total sale to user's total
-            row.total = Number(row.total) + total
+            row.total = Number(row.total) + Number(total)
             row.save()
             handleOpen()
         }
