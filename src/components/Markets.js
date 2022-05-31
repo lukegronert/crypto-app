@@ -17,8 +17,8 @@ import '../css/markets.css';
 export default function Markets({coinData, user, doc}) {
     const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
-    function createData(id, symbol, priceUsd, changePercent24Hr) {
-      return { id, symbol, priceUsd, changePercent24Hr };
+    function createData(id, name, symbol, priceUsd, changePercent24Hr) {
+      return { id, name, symbol, priceUsd, changePercent24Hr };
     }
     
     
@@ -35,7 +35,7 @@ export default function Markets({coinData, user, doc}) {
     } else if (coinData && !isMobile) {
         const rows = coinData.map(coin => (
                                                         //multiple and divide by 10000 to return numbers to 4 decimal places
-            createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*10000)/10000), (Math.round(coin.changePercent24Hr* 100)/100))
+            createData(coin.id, coin.name, coin.symbol, (Math.round(coin.priceUsd*10000)/10000), (Math.round(coin.changePercent24Hr* 100)/100))
         ))
 
         return (
@@ -57,7 +57,7 @@ export default function Markets({coinData, user, doc}) {
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                         <TableCell component="th" scope="row">
-                            {row.id}
+                            {row.name}
                         </TableCell>
                         <TableCell align="right">{row.symbol}</TableCell>
                         <TableCell align="right">${row.priceUsd}</TableCell>
@@ -74,7 +74,7 @@ export default function Markets({coinData, user, doc}) {
         );
     } else {
         const rows = coinData.map(coin => (
-            createData(coin.id, coin.symbol, (Math.round(coin.priceUsd*100)/100), (Math.round(coin.changePercent24Hr* 100)/100))
+            createData(coin.id, coin.name, coin.symbol, (Math.round(coin.priceUsd*100)/100), (Math.round(coin.changePercent24Hr* 100)/100))
         ))
 
         return (
