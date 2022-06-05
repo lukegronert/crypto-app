@@ -44,7 +44,7 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
         <section>
             {leaderboard.map(user => {
                 return (
-                    <div key={user.user}>{user.user} - {user.total}</div>
+                    <div key={user.userName}>{user.user} - {user.total}</div>
                 )
             })}
         </section>
