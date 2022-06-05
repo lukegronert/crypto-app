@@ -39,10 +39,10 @@ export default function Markets({coinData, user, doc}) {
         ))
 
         return (
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableContainer component={Paper} >
+                <Table sx={{ minWidth: 650, backgroundColor: '#B2DBEB'}} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
+                        <TableRow >
                             <TableCell>Coin</TableCell>
                             <TableCell align="right">Symbol</TableCell>
                             <TableCell align="right">Price (USD)</TableCell>
@@ -63,8 +63,8 @@ export default function Markets({coinData, user, doc}) {
                         <TableCell align="right">${row.priceUsd}</TableCell>
                         <TableCell align="right">{row.changePercent24Hr}%</TableCell>
                         <TableCell align="right">
-                            <button style={{background: 'blue'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
-                            <button style={{background: 'green'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                            <button style={{background: '#286e18', border: 'none'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                            <button style={{background: '#f5594e', border: 'none'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
                         </TableCell>
                         </TableRow>
                     ))}

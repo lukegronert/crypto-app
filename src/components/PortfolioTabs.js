@@ -132,9 +132,9 @@ export default function PortfolioTabs({userPurchases, userSales, userCoinTotals,
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs centered value={value} onChange={handleChange}>
-          <Tab label="Totals" style={{color: 'white'}} {...a11yProps(0)} />
-          <Tab label="Purchases" style={{color: 'white'}} {...a11yProps(1)} />
-          <Tab label="Sales" style={{color: 'white'}} {...a11yProps(2)} />
+          <Tab label="Totals" style={{color: '#424b54'}} {...a11yProps(0)} />
+          <Tab label="Purchases" style={{color: '#424b54'}} {...a11yProps(1)} />
+          <Tab label="Sales" style={{color: '#424b54'}} {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

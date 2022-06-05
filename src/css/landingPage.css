@@ -11,9 +11,10 @@
 .landingPageh1 {
     width: 100%;
     font-size: 4em;
-    color: white;
+    color: black;
 }
 
 body {
-    background: var(--black)
+    background: white;
+    color: var(--black);
 }
