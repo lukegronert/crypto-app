@@ -13,6 +13,7 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
                 userName: sheet1Rows[i].user,
                 total: Number(sheet1Rows[i].total)
             }
+            console.log(userBank)
             sheet3Rows.forEach(row => {
                 if(row.user === sheet1Rows[i].user) {
                     for(let j=0;j<coinData.length;j++) {
@@ -44,7 +45,7 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
         <section>
             {leaderboard.map(user => {
                 return (
-                    <div key={user.userName}>{user.user} - {user.total}</div>
+                    <div key={user.userName}>{user.userName} - {user.total}</div>
                 )
             })}
         </section>
