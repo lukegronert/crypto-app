@@ -1,5 +1,9 @@
 import {useEffect, useState} from 'react';
 import PortfolioTabs from './PortfolioTabs';
+import DonutSmallIcon from '@mui/icons-material/DonutSmall';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+
+import '../css/portfolio.css'
 
 
 export default function Portfolio({user, coinData, doc}) {
@@ -96,9 +100,11 @@ export default function Portfolio({user, coinData, doc}) {
     if(user && userTotal > 0) {
         return (
             <section>
-                <h1>{user}</h1>
-                <p>Cash: ${userTotal}</p>
-                <p>Portfolio value: ${portfolioValue}</p>
+                <section className="portfolioHeader">
+                    <p>{user}</p>
+                    <p><AccountBalanceIcon style={{verticalAlign: 'middle', marginTop: '-3px'}} /> ${userTotal}</p>
+                    <p><DonutSmallIcon style={{ verticalAlign: 'middle', marginTop: '-3px'}} /> ${portfolioValue}</p>
+                </section>
                 <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} coinData={coinData} />
             </section>
         )
