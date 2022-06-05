@@ -7,14 +7,7 @@ export default function TotalsTab({userCoinTotals, coinData}) {
         console.log(userCoinTotals)
     }, [])
     return (
-        <section>
-            <table>
-                <tr>
-                    <th>Coin</th>
-                    <th>Amount</th>
-                    <th>Total</th>
-                </tr>
-            </table>
+        <section className="cardContainer">
                 {userCoinTotals.map((coin, index) => {
                     const coinTotal = coinData.map(coinObj => {
                         if(coin.coin === coinObj.symbol) {

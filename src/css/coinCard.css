@@ -1,10 +1,25 @@
-.coinCard {
+.cardContainer {
     width: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.coinCard {
+    width: 40%;
+    height: 80px;
     margin: 20px auto;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(65,157,120,1) 69%);
+    background: linear-gradient(315deg, #E1E9EC 0%, #B2DBEB 69%);
+    box-shadow: 5px 4px 21px 0px rgba(0,0,0,0.1);
 }
