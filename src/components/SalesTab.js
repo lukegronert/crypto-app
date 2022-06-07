@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import CoinCard from './CoinCard.js';
 
 export default function SalesTab({userSales}) {
 
@@ -6,14 +7,12 @@ export default function SalesTab({userSales}) {
         console.log(userSales)
     }, [])
     return (
-        <>
+        <section className="cardContainer">
             {userSales.map((sale, index) => {
                 return (
-                    <div key={index}>
-                        {sale.coin} - price: {sale.price} - amount: {sale.amount}- total: {sale.total}
-                    </div>
+                    <CoinCard key={index} coin={sale.coin} amount={sale.amount} total={sale.total} />
                 )
             })}
-        </>
+        </section>
     )
 }

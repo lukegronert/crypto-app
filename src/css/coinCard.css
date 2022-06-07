@@ -24,6 +24,10 @@
     box-shadow: 5px 4px 21px 0px rgba(0,0,0,0.1);
 }
 
+.coinCardAmount {
+    justify-self: center;
+}
+
 @media screen and (max-width: 500px) {
     .coinCard {
         width: 100%;
