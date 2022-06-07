@@ -1,0 +1,14 @@
+.leaderboardTable td, .leaderboardTable th {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+    .leaderboardTable td, .leaderboardTable th {
+        font-size: 1rem;
+        margin-right: 16px;
+    }
+
+    .leaderboardTable .rowValue {
+        padding: 16px;
+    }
+}
