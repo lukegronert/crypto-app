@@ -16,7 +16,7 @@
     border-radius: 1rem;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     background: rgb(255,255,255);
@@ -24,8 +24,19 @@
     box-shadow: 5px 4px 21px 0px rgba(0,0,0,0.1);
 }
 
-.coinCardAmount {
-    justify-self: center;
+/* Aligns the middle item on the card in the exact center of the card */
+.coinCardBox {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.coinCardSymbol {
+    margin-right: auto;
+}
+
+.coinCardTotal {
+    margin-left: auto;
 }
 
 @media screen and (max-width: 500px) {
