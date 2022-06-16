@@ -7,12 +7,12 @@ export default function About() {
         <section>
             <MainNav />
             <div className="aboutDescription">
-                <h1 className="aboutDescriptionTitle">ABOUT</h1>
+                <h1 className="aboutDescriptionTitle">ABOUT US</h1>
                 <p>
-                    CRYPTO is a website for people who want to invest in cryptocurrency without the risk 
-                    of using real money. Users can use the platform to buy and sell various coins, 
+                    Mock Exchange is a website for people who want to invest in cryptocurrency without the risk 
+                    of losing out on their investments. Users get fake internet dollars to buy and sell various coins, 
                     track purchases, and compete to be one of the top most profitable portfolios on 
-                    CRYPTO. 
+                    Mock Exchange. 
                 </p>
                     
                 <p>
@@ -23,7 +23,7 @@ export default function About() {
                             "Login/Logout"
                         </li>
                         <li>
-                            Follow Sign Up instructions (Note that your name will be used as your Display Name on CRYPTO)
+                            Follow Sign Up instructions (Note that the name you enter will be used as your display name)
                         </li>
                         <li>
                             Make sure to check the verification email that will be sent to you

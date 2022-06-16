@@ -57,7 +57,7 @@ export default function MainNav ({user}) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MOCKX
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -123,7 +123,7 @@ export default function MainNav ({user}) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MOCKX
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button

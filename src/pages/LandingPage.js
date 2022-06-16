@@ -5,7 +5,7 @@ export default function LandingPage({user}) {
         <section>
             <MainNav user={user} />
             <div className="h1Container">
-                <h1 className='landingPageh1'>CRYPTO</h1>
+                <h1 className='landingPageh1'>Mock Exchange</h1>
             </div>
         </section>
     )
