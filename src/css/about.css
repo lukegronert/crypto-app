@@ -1,0 +1,15 @@
+.aboutDescription {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 5px 4px 21px 0px rgba(0,0,0,0.1);
+    font-size: 1.5rem;
+}
+
+.aboutDescriptionTitle {
+    text-align: center;
+}
+
+.accountInstructionsList li {
+    margin: 20px;
+}
