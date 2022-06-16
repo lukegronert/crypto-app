@@ -28,16 +28,9 @@ export default function Markets({coinData, user, doc}) {
 
     if(!coinData) {
         return (
-            <div>
-                Loading...
-            </div>
+            <div>Loading...</div>
         )
     } else if (coinData && !isMobile) {
-        const rows = coinData.map(coin => (
-                                                        //multiple and divide by 10000 to return numbers to 4 decimal places
-            createData(coin.id, coin.name, coin.symbol, (Math.round(coin.priceUsd*10000)/10000), (Math.round(coin.changePercent24Hr* 100)/100))
-        ))
-
         return (
             <TableContainer component={Paper} >
                 <Table sx={{ minWidth: 650, backgroundColor: '#B2DBEB'}} aria-label="simple table">
@@ -51,20 +44,20 @@ export default function Markets({coinData, user, doc}) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {rows.map((row) => (
+                    {coinData.map((coin) => (
                         <TableRow
-                        key={row.id}
+                        key={coin.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                         <TableCell component="th" scope="row">
-                            {row.name}
+                            {coin.name}
                         </TableCell>
-                        <TableCell align="right">{row.symbol}</TableCell>
-                        <TableCell align="right">${row.priceUsd}</TableCell>
-                        <TableCell align="right">{row.changePercent24Hr}%</TableCell>
+                        <TableCell align="right">{coin.symbol}</TableCell>
+                        <TableCell align="right">${(Math.round(coin.priceUsd*100000)/100000)}</TableCell>
+                        <TableCell align="right">{(Math.round(coin.changePercent24Hr* 100)/100)}%</TableCell>
                         <TableCell align="right">
-                            <button style={{background: '#286e18', border: 'none'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
-                            <button style={{background: '#f5594e', border: 'none'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                            <button style={{background: '#286e18', border: 'none'}}><BuyModal coin={coin.symbol} price={coin.priceUsd} user={user} doc={doc} /></button>
+                            <button style={{background: '#f5594e', border: 'none'}}><SellModal coin={coin.symbol} price={coin.priceUsd} user={user} doc={doc} /></button>
                         </TableCell>
                         </TableRow>
                     ))}
@@ -73,10 +66,6 @@ export default function Markets({coinData, user, doc}) {
             </TableContainer>
         );
     } else {
-        const rows = coinData.map(coin => (
-            createData(coin.id, coin.name, coin.symbol, (Math.round(coin.priceUsd*100)/100), (Math.round(coin.changePercent24Hr* 100)/100))
-        ))
-
         return (
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 300 }} aria-label="simple table">
@@ -89,17 +78,17 @@ export default function Markets({coinData, user, doc}) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {rows.map((row) => (
+                    {coinData.map((coin) => (
                         <TableRow
-                        key={row.id}
+                        key={coin.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">{row.symbol}</TableCell>
-                            <TableCell align="right">${row.priceUsd}</TableCell>
-                            <TableCell align="right">{row.changePercent24Hr}%</TableCell>
+                            <TableCell component="th" scope="row">{coin.symbol}</TableCell>
+                            <TableCell align="right">${(Math.round(coin.priceUsd*100)/100)}</TableCell>
+                            <TableCell align="right">{(Math.round(coin.changePercent24Hr* 100)/100)}%</TableCell>
                             <TableCell align="right">
-                                <button style={{background: '#286e18', border: 'none', height: '25px'}}><BuyModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
-                                <button style={{background: '#f5594e', border: 'none', height: '25px'}}><SellModal coin={row.symbol} price={row.priceUsd} user={user} doc={doc} /></button>
+                                <button style={{background: '#286e18', border: 'none', height: '25px'}}><BuyModal coin={coin.symbol} price={coin.priceUsd} user={user} doc={doc} /></button>
+                                <button style={{background: '#f5594e', border: 'none', height: '25px'}}><SellModal coin={coin.symbol} price={coin.priceUsd} user={user} doc={doc} /></button>
                             </TableCell>
                         </TableRow>
                     ))}
