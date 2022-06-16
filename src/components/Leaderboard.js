@@ -7,6 +7,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
+
 import '../css/leaderboard.css';
 
 export default function Leaderboard({coinData, setCoinData, doc}) {
@@ -60,7 +63,11 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
 
     if(isLoading) {
         return (
-            <div>Loading...</div>
+            <section className="loaderSection">
+                <Box sx={{ width: '50%' }}>
+                    <LinearProgress />
+                </Box>
+            </section>
         )
     } else {
         return (
