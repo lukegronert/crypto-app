@@ -5,13 +5,13 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 import '../css/portfolio.css'
 
-
 export default function Portfolio({user, coinData, doc}) {
     const [userTotal, setUserTotal] = useState(0)
     const [userPurchases, setUserPurchases] = useState([])
     const [userSales, setUserSales] = useState([])
     const [userCoinTotals, setUserCoinTotals] = useState([])
     const [portfolioValue, setPortfolioValue] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
 
     const getUserTotal = async () => {
         const sheet1 = doc.sheetsByIndex[0]
@@ -19,10 +19,9 @@ export default function Portfolio({user, coinData, doc}) {
         sheet1Rows.map(row => {
             if(row.user === user) {
                 setUserTotal(row.total)
-            } else {
-                setUserTotal(-1)
             }
         })
+        setIsLoading(false)
     }
     const getUserPurchases = async () => {
         const sheet2 = doc.sheetsByIndex[1];
@@ -31,7 +30,6 @@ export default function Portfolio({user, coinData, doc}) {
         await sheet2Rows.map(row => {
              if(row.user === user) {
                 purchasesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
-                console.log(purchasesArray)
             }
         })
         console.log(purchasesArray)
@@ -95,14 +93,17 @@ export default function Portfolio({user, coinData, doc}) {
 
     useEffect(() => {
         getPortfolioValue()
-    }, [userCoinTotals])
-    
-    if(user && userTotal > 0) {
+    }, [userCoinTotals, userTotal])
+    if (isLoading) {
+        return (
+            <div>Loading...</div>
+        )
+    } else if(user && userTotal > 0) {
         return (
             <section>
                 <section className="portfolioHeader">
                     <p>{user}</p>
-                    <p><AccountBalanceIcon style={{verticalAlign: 'middle', marginTop: '-3px'}} /> ${userTotal}</p>
+                    <p><AccountBalanceIcon style={{verticalAlign: 'middle', marginTop: '-3px'}} /> ${(Math.round(userTotal*100)/100)}</p>
                     <p><DonutSmallIcon style={{ verticalAlign: 'middle', marginTop: '-3px'}} /> ${portfolioValue}</p>
                 </section>
                 <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} coinData={coinData} />

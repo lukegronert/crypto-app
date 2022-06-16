@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {GoogleSpreadsheet} from 'google-spreadsheet';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
