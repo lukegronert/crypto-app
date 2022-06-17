@@ -27,9 +27,6 @@ export default function Dashboard({coinData, setCoinData, user}) {
             setCoinData(data.data)
             console.log(data.data)
             })
-            async function loadDoc() {
-                await doc.loadInfo()
-            }
     }, []);
 
     return (
