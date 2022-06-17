@@ -63,7 +63,7 @@ export default function NestedModal({coin, price, user, doc}) {
       const sheet3Rows = await sheet3.getRows()
       //Find row of user's selected coin total
       sheet3Rows.map(row => {
-        if(row.user == user && row.coin == coin) {
+        if(row.user === user && row.coin === coin) {
           setUserCoinTotal(row.total)
         }
       })
@@ -79,7 +79,7 @@ export default function NestedModal({coin, price, user, doc}) {
 
   const addSellToUserTotal = async (rows, handleOpen) => {
     //check for user's row in OverallUserData sheet
-    rows.map(row => {
+    rows.forEach(row => {
         if(row.user === user) {
           //Add total sale to user's total
             row.total = Number(row.total) + Number(total)
@@ -97,7 +97,7 @@ export default function NestedModal({coin, price, user, doc}) {
     // gets rows of that sheet
     const sheet3Rows = await sheet3.getRows()
     //checks all rows to see if user owns any of selected coin
-    sheet3Rows.map(async row => {
+    sheet3Rows.forEach(async row => {
         //if there is a row with the user's name and selected coin
         if(row.user === user && row.coin === coin) {
             //if user owns more of the coin than they want to sell

@@ -89,7 +89,7 @@ export default function MainNav ({user}) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem key='about' onClick={handleCloseNavMenu}>
+              <MenuItem key='home' onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                       <Link style={{color: '#424b54'}} to="/" >Home</Link>
                   </Typography>

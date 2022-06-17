@@ -17,9 +17,9 @@ export default function Portfolio({user, coinData, doc}) {
         await doc.loadInfo()
         const sheet1 = doc.sheetsByIndex[0]
         const sheet1Rows = await sheet1.getRows()
-        sheet1Rows.map(row => {
+        sheet1Rows.forEach(row => {
             if(row.user === user) {
-                setUserTotal(row.total)
+                return setUserTotal(row.total)
             }
         })
         setIsLoading(false)
@@ -28,21 +28,20 @@ export default function Portfolio({user, coinData, doc}) {
         const sheet2 = doc.sheetsByIndex[1];
         const sheet2Rows = await sheet2.getRows();
         let purchasesArray = []
-        await sheet2Rows.map(row => {
+        await sheet2Rows.forEach(row => {
              if(row.user === user) {
-                purchasesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
+                return purchasesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
             }
         })
-        console.log(purchasesArray)
         setUserPurchases(purchasesArray)
     }
     const getUserSales = async () => {
         const sheet4 = doc.sheetsByIndex[3];
         const sheet4Rows = await sheet4.getRows();
         let salesArray = []
-        await sheet4Rows.map(row => {
+        await sheet4Rows.forEach(row => {
             if(row.user === user) {
-                salesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
+                return salesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
             }
         })
         setUserSales(salesArray)
@@ -51,13 +50,12 @@ export default function Portfolio({user, coinData, doc}) {
         const sheet3 = doc.sheetsByIndex[2];
         const sheet3Rows = await sheet3.getRows();
         let coinTotalsArray = []
-        await sheet3Rows.map(row => {
+        await sheet3Rows.forEach(row => {
             if(row.user === user) {
-                coinTotalsArray.push({coin: row.coin, amount: row.amount, total: row.total})
+                return coinTotalsArray.push({coin: row.coin, amount: row.amount, total: row.total})
             }
         })
         setUserCoinTotals(coinTotalsArray)
-        console.log(coinTotalsArray)
     }
 
     const getPortfolioValue = () => {
@@ -66,7 +64,6 @@ export default function Portfolio({user, coinData, doc}) {
             for(let i=0; i<coinData.length;i++) {
                 if(coin.coin === coinData[i].symbol) {
                     portVal += (coin.amount * coinData[i].priceUsd)
-                    console.log(portVal)
                 }
             }
         })

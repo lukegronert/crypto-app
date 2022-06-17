@@ -1,11 +1,7 @@
-import {useEffect} from 'react';
 import CoinCard from './CoinCard';
 
 export default function TotalsTab({userCoinTotals, coinData}) {
 
-    useEffect(() => {
-        console.log(userCoinTotals)
-    }, [])
     return (
         <section className="cardContainer">
                 {userCoinTotals.map((coin, index) => {

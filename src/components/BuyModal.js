@@ -80,7 +80,7 @@ export default function NestedModal({coin, price, user, doc}) {
     //checks all rows to look for users row
     sheet1Rows.map(async row => {
         //if there is a row with the useruser
-        if(row.user == user) {
+        if(row.user === user) {
             //if the user's total has enough money
             if(row.total >= total) {
                 //create variable for sheet 2, purchases

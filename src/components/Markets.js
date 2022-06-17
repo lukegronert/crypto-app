@@ -15,12 +15,7 @@ import '../css/markets.css';
 
 
 export default function Markets({coinData, user, doc}) {
-    const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
-
-    function createData(id, name, symbol, priceUsd, changePercent24Hr) {
-      return { id, name, symbol, priceUsd, changePercent24Hr };
-    }
-    
+    const isMobile = useMediaQuery({ query: `(max-width: 760px)` });    
     
     useEffect(() => {
         console.log('rerender')

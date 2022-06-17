@@ -28,7 +28,6 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
                 userName: sheet1Rows[i].user,
                 total: Number(sheet1Rows[i].total)
             }
-            console.log(userBank)
             sheet3Rows.forEach(row => {
                 if(row.user === sheet1Rows[i].user) {
                     for(let j=0;j<coinData.length;j++) {
@@ -72,13 +71,6 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
         )
     } else {
         return (
-            // <section>
-            //     {leaderboard.map((user, index) => {
-            //         return (
-            //             <div key={user.userName}>#{index+1} {user.userName} - {user.total}</div>
-            //         )
-            //     })}
-            // </section>
             <TableContainer component={Paper} style={{maxWidth: '650px', margin: 'auto'}} className="leaderboardTable" >
                     <Table sx={{ maxWidth: 650, backgroundColor: '#B2DBEB' }} aria-label="simple table">
                         <TableHead>
@@ -91,7 +83,7 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
                         <TableBody>
                         {leaderboard.map((row, index) => (
                             <TableRow
-                            key={row.id}
+                            key={row.userName}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
