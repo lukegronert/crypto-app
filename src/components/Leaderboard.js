@@ -17,6 +17,7 @@ export default function Leaderboard({coinData, setCoinData, doc}) {
     const [isLoading, setIsLoading] = useState(true);
 
     const getUserCoinTotals = async () => {
+        await doc.loadInfo()
         const sheet1 = doc.sheetsByIndex[0];
         const sheet1Rows = await sheet1.getRows();
         const sheet3 = doc.sheetsByIndex[2];

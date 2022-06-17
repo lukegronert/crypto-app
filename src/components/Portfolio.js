@@ -14,6 +14,7 @@ export default function Portfolio({user, coinData, doc}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const getUserTotal = async () => {
+        await doc.loadInfo()
         const sheet1 = doc.sheetsByIndex[0]
         const sheet1Rows = await sheet1.getRows()
         sheet1Rows.map(row => {
