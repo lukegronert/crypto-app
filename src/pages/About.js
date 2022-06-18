@@ -19,7 +19,7 @@ export default function About() {
                     To open your account:
                     <ol className="accountInstructionsList">
                         <li>
-                            Click the A in the rop right of the page and select 
+                            Click the A in the top right of the page and select 
                             "Login/Logout"
                         </li>
                         <li>

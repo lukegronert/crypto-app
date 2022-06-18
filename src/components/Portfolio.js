@@ -107,7 +107,7 @@ export default function Portfolio({user, coinData, doc}) {
                 <PortfolioTabs userPurchases={userPurchases} userSales={userSales} userCoinTotals={userCoinTotals} coinData={coinData} />
             </section>
         )
-    } else if (user && userTotal < 0) {
+    } else if (user) {
         return (
             <section>
                 <h1>{user}</h1>
