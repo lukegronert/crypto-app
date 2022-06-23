@@ -9,7 +9,7 @@ export default function About() {
             <div className="aboutDescription">
                 <h1 className="aboutDescriptionTitle">ABOUT US</h1>
                 <p>
-                    Mock Exchange is a website for people who want to invest in cryptocurrency without the risk 
+                    Mock Exchange is a platform for people who want to invest in cryptocurrency without the risk 
                     of losing out on their investments. Users get fake internet dollars to buy and sell various coins, 
                     track purchases, and compete to be one of the top most profitable portfolios on 
                     Mock Exchange. 
@@ -32,7 +32,7 @@ export default function About() {
                             After verifying your email, head over to the Dashboard page
                         </li>
                         <li>
-                            Go to the Account tab
+                            Go to the Portfolio tab
                         </li>
                         <li>
                             Click "Fill your bank!"
