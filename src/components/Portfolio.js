@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import PortfolioTabs from './PortfolioTabs';
 import DonutSmallIcon from '@mui/icons-material/DonutSmall';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 import '../css/portfolio.css'
 
@@ -94,7 +96,11 @@ export default function Portfolio({user, coinData, doc}) {
     }, [userCoinTotals, userTotal])
     if (isLoading) {
         return (
-            <div>Loading...</div>
+            <section className="loaderSection">
+                <Box sx={{ width: '50%' }}>
+                    <LinearProgress />
+                </Box>
+            </section>
         )
     } else if(user && userTotal > 0) {
         return (
