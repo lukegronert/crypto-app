@@ -35,6 +35,7 @@ export default function Portfolio({user, coinData, doc}) {
                 return purchasesArray.push({coin: row.coin, price: row.price, amount: row.amount, total: row.total})
             }
         })
+        purchasesArray = purchasesArray.reverse()
         setUserPurchases(purchasesArray)
     }
     const getUserSales = async () => {

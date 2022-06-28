@@ -14,7 +14,7 @@ export default function TotalsTab({userCoinTotals, coinData}) {
                         }
                     });
                     //filter out all undefined values and get the only number remaining
-                    coinTotal = coinTotal.filter(value => value !==undefined)[0]
+                    coinTotal = coinTotal.filter(value => value !==undefined || value>0)[0]
                     return (
                         <CoinCard coin={coin.coin} amount={coin.amount} total={coinTotal} />
                     )
