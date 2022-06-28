@@ -18,7 +18,7 @@ const style = {
   pb: 3,
 };
 
-function ChildModal({addPurchaseToSheet, purchaseMessage}) {
+function ChildModal({addPurchaseToSheet, purchaseMessage, amount}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -29,7 +29,15 @@ function ChildModal({addPurchaseToSheet, purchaseMessage}) {
 
   return (
     <React.Fragment>
-      <Button onClick={() => addPurchaseToSheet(handleOpen)} style={{padding: 0}}>Confirm Purchase</Button>
+      <Button onClick={() => {
+        if(amount > 0) {
+          addPurchaseToSheet(handleOpen)
+          //#outlined-basic is the id of the input
+          document.querySelector('#outlined-basic').value = null
+        }
+      }}
+        style={{padding: 0}}
+        className="confirm-purchase-button">Confirm Purchase</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -39,9 +47,6 @@ function ChildModal({addPurchaseToSheet, purchaseMessage}) {
       >
         <Box sx={{ ...style, width: 200 }}>
           <h2 id="child-modal-title">{purchaseMessage}</h2>
-          <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
           <Button onClick={handleClose}>Close</Button>
         </Box>
       </Modal>
@@ -73,6 +78,7 @@ export default function NestedModal({coin, price, user, doc}) {
 
   //pass in handleOpen parameter so childModal can pass in its own handleOpen function
   const addPurchaseToSheet = async (handleOpen) => {
+    document.querySelector('.confirm-purchase-button').style.display = "none";
       //opens overallUserData sheet
     const sheet1 = doc.sheetsByIndex[0]
     // gets rows of that sheet
@@ -116,6 +122,9 @@ export default function NestedModal({coin, price, user, doc}) {
             }
         }
     })
+    document.querySelector('.confirm-purchase-button').style.display = "block";
+    setAmount(0)
+    setTotal(0)
   }
 
   return (
@@ -129,12 +138,12 @@ export default function NestedModal({coin, price, user, doc}) {
       >
         <Box sx={{ ...style, width: 300 }}>
           <h2 id="parent-modal-title">{coin} - ${price}</h2>
-          <TextField id="outlined-basic" label="Amount" variant="outlined" onChange={(e) => {
+          <TextField id="outlined-basic" className="buy-modal-input" label="Amount" variant="outlined" onChange={(e) => {
               setAmount(e.target.value)
               setTotal(price * e.target.value)
           }} />
           <p>Total price: ${total}</p>
-          <ChildModal addPurchaseToSheet={addPurchaseToSheet} purchaseMessage={purchaseMessage} />
+          <ChildModal addPurchaseToSheet={addPurchaseToSheet} purchaseMessage={purchaseMessage} amount={amount} />
         </Box>
       </Modal>
     </div>
