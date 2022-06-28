@@ -21,7 +21,7 @@ const doc = new GoogleSpreadsheet(REACT_APP_SHEET_ID);
 
 export default function Dashboard({coinData, setCoinData, user}) {
     useEffect(() => {
-        fetch('https://api.coincap.io/v2/assets?limit=15')
+        fetch('https://api.coincap.io/v2/assets')
             .then(response => response.json())
             .then(data => {
                 setCoinData(data.data)

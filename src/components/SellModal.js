@@ -18,7 +18,7 @@ const style = {
   pb: 3,
 };
 
-function ChildModal({addSellToSheet, sellMessage}) {
+function ChildModal({addSellToSheet, sellMessage, setAmount, setTotal}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -29,7 +29,10 @@ function ChildModal({addSellToSheet, sellMessage}) {
 
   return (
     <React.Fragment>
-      <Button onClick={() => addSellToSheet(handleOpen)} style={{padding: 0}}>Confirm Sell</Button>
+      <Button onClick={() => {
+        addSellToSheet(handleOpen)
+        document.querySelector('#outlined-basic').value = null
+        }} style={{padding: 0}} className="confirm-sell-button">Confirm Sell</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -39,9 +42,6 @@ function ChildModal({addSellToSheet, sellMessage}) {
       >
         <Box sx={{ ...style, width: 200 }}>
           <h2 id="child-modal-title">{sellMessage}</h2>
-          <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
           <Button onClick={handleClose}>Close</Button>
         </Box>
       </Modal>
@@ -55,6 +55,7 @@ export default function NestedModal({coin, price, user, doc}) {
   const [total, setTotal] = React.useState(0);
   const [sellMessage, setSellMessage] = React.useState('')
   const [userCoinTotal, setUserCoinTotal] = React.useState(0)
+  const [userCoinTotalAmount, setUserCoinTotalAmount] = React.useState(0)
 
   const checkUserCoinTotal = async () => {
       //set variable for sheet3, UserCoinTotals
@@ -65,6 +66,7 @@ export default function NestedModal({coin, price, user, doc}) {
       sheet3Rows.map(row => {
         if(row.user === user && row.coin === coin) {
           setUserCoinTotal(row.total)
+          setUserCoinTotalAmount(row.amount)
         }
       })
     };
@@ -90,6 +92,7 @@ export default function NestedModal({coin, price, user, doc}) {
   }
   //pass in handleOpen parameter so childModal can pass in its own handleOpen function
   const addSellToSheet = async (handleOpen) => {
+    document.querySelector('.confirm-sell-button').style.display = "none";
     const sheet1 = doc.sheetsByIndex[0]
     const sheet1Rows = await sheet1.getRows()
     //opens userCoinTotals sheet
@@ -125,6 +128,9 @@ export default function NestedModal({coin, price, user, doc}) {
             handleOpen()
         }
     })
+    setAmount(0)
+    setTotal(0)
+    document.querySelector('.confirm-sell-button').style.display = "block";
   }
 
   return (
@@ -142,9 +148,10 @@ export default function NestedModal({coin, price, user, doc}) {
               setAmount(e.target.value)
               setTotal(price * e.target.value)
           }} />
-          <p>Your total {coin} value: {userCoinTotal}</p>
-          <p>Total price: ${total}</p>
-          <ChildModal addSellToSheet={addSellToSheet} sellMessage={sellMessage} />
+          <p>Your total {coin} value: ${userCoinTotal}</p>
+          <p>Total {coin}s: {userCoinTotalAmount}</p>
+          <p>Total sale price: ${total}</p>
+          <ChildModal addSellToSheet={addSellToSheet} sellMessage={sellMessage} setAmount={setAmount} setTotal={setTotal} />
         </Box>
       </Modal>
     </div>

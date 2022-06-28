@@ -16,9 +16,10 @@ export default function TotalsTab({userCoinTotals, coinData}) {
                     //filter out all undefined values and get the only number remaining
                     coinTotal = coinTotal.filter(value => value !==undefined || value>0)[0]
                     return (
-                        <CoinCard coin={coin.coin} amount={coin.amount} total={coinTotal} />
+                        <CoinCard coin={coin.coin} amount={Math.round(coin.amount*100)/100} total={coinTotal} />
                     )
                 })}
+                <span>{'(coin totals and amounts that show 0 are less than 0.01)'}</span>
         </section>
     )
 }

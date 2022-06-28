@@ -11,7 +11,7 @@ export default function CoinCard({coin, amount, total}) {
                 <p className="coinCardAmount">{amount} <DonutSmallIcon style={{ verticalAlign: 'middle', marginTop: '-3px'}} /></p>
             </div>
             <div className="coinCardBox">
-                <p className="coinCardTotal">${Number(total).toFixed(2)}</p> 
+                <p className="coinCardTotal">${total}</p> 
             </div>
         </div>
     )

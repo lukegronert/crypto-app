@@ -8,6 +8,13 @@
     align-items: center;
 }
 
+.cardContainer span {
+    width: 90%;
+    justify-self: center;
+    text-align: center;
+    color: lightgrey;
+}
+
 .coinCard {
     width: 40%;
     height: 80px;
