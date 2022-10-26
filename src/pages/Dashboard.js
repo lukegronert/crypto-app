@@ -25,6 +25,7 @@ export default function Dashboard({coinData, setCoinData, user}) {
             .then(response => response.json())
             .then(data => {
                 setCoinData(data.data)
+                console.log(data.data)
             })
     }, []);
 
